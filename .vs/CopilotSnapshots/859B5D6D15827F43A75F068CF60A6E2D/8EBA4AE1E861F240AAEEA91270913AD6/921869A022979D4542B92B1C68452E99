@@ -1,0 +1,23 @@
+﻿using Godot;
+
+public partial class MainWindowViewModel : Control
+{
+    [Export]
+    public PanelContainer BackgroundPanel { get; set; }
+    [Export]
+    public Control VisualNodeRoot { get; set; }
+
+    public override void _Ready()
+    {
+        // VisualNodeRoot must cover the BackgroundPanel so GUI input reaches child VisualNodes.
+        // A plain Control has no automatic layout, so we sync its size manually.
+        VisualNodeRoot.MouseFilter = MouseFilterEnum.Pass;
+        SyncVisualNodeRootSize();
+        BackgroundPanel.Resized += SyncVisualNodeRootSize;
+    }
+
+    private void SyncVisualNodeRootSize()
+    {
+        VisualNodeRoot.Size = BackgroundPanel.Size;
+    }
+}

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqnjm16tu4dkk"]
+
+[ext_resource type="Script" uid="uid://iyuvpsgki45f" path="res://view_models/ComponentViewModel.cs" id="1_bypsp"]
+
+[node name="ComponentView" type="PanelContainer" unique_id=1273067120 node_paths=PackedStringArray("ComponentNameLabel", "ComponentColorCode")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bypsp")
+ComponentNameLabel = NodePath("MarginContainer/HBoxContainer/Label")
+ComponentColorCode = NodePath("MarginContainer/HBoxContainer/ColorRect")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1533712463]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=811909778]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer" unique_id=661316591]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=247646370]
+layout_mode = 2
+text = "ComponentName"
+horizontal_alignment = 1
+vertical_alignment = 1

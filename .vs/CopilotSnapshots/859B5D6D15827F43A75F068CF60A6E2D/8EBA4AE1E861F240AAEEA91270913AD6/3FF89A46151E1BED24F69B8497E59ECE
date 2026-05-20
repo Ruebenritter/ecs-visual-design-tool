@@ -1,0 +1,11 @@
+﻿using Godot;
+using System;
+
+public partial class MainWindowViewModel : Control
+{
+    [Export]
+    public PanelContainer BackgroundPanel { get; set; }
+    [Export]
+    public Control VisualNodeRoot { get; set; }
+
+}
