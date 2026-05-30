@@ -58,7 +58,7 @@ public abstract partial class VisualNode : PanelContainer
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        SetDragPreview(DragPreviewScene.Instantiate() as DragPreviewIconViewModel);
+        //SetDragPreview(DragPreviewScene.Instantiate() as DragPreviewIconViewModel);
         return base._GetDragData(atPosition);
     }
 }
