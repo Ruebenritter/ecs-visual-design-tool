@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-InputDebugger="*uid://csvknortqo6cv"
+InputDebugger="uid://csvknortqo6cv"
 
 [display]
 
