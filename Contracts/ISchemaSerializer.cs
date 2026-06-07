@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using Xtype.Models;
 
 namespace Xtype.Contracts;
 
 public interface ISchemaSerializer
 {
-    Schema Load(string path);
-    void Save(Schema schema, string path);
+    Task<Schema> LoadAsync(string path);
+    Task SaveAsync(Schema schema, string path);
 }

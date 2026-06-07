@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xtype.Contracts;
 using Xtype.Models;
@@ -14,16 +15,16 @@ public class JsonSchemaSerializer : ISchemaSerializer
         NullValueHandling = NullValueHandling.Ignore,
     };
 
-    public Schema Load(string path)
+    public async Task<Schema> LoadAsync(string path)
     {
-        string json = File.ReadAllText(path);
+        string json = await File.ReadAllTextAsync(path);
         return JsonConvert.DeserializeObject<Schema>(json, Settings)
             ?? throw new InvalidDataException($"Failed to deserialize schema from '{path}'.");
     }
 
-    public void Save(Schema schema, string path)
+    public async Task SaveAsync(Schema schema, string path)
     {
         string json = JsonConvert.SerializeObject(schema, Settings);
-        File.WriteAllText(path, json);
+        await File.WriteAllTextAsync(path, json);
     }
 }

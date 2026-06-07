@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using Xtype.Contracts;
@@ -18,16 +19,16 @@ public class YamlSchemaSerializer : ISchemaSerializer
         .IgnoreUnmatchedProperties()
         .Build();
 
-    public Schema Load(string path)
+    public async Task<Schema> LoadAsync(string path)
     {
-        string yaml = File.ReadAllText(path);
+        string yaml = await File.ReadAllTextAsync(path);
         return Deserializer.Deserialize<Schema>(yaml)
             ?? throw new InvalidDataException($"Failed to deserialize schema from '{path}'.");
     }
 
-    public void Save(Schema schema, string path)
+    public async Task SaveAsync(Schema schema, string path)
     {
         string yaml = Serializer.Serialize(schema);
-        File.WriteAllText(path, yaml);
+        await File.WriteAllTextAsync(path, yaml);
     }
 }
